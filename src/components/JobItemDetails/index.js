@@ -188,19 +188,21 @@ class JobItemDetails extends Component {
   }
 
   renderFailureView = () => (
-    <div>
+    <div className="failure-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
       />
-      <p className="title">Oops! Something Went Wrong</p>
+      <h1 className="title">Oops! Something Went Wrong</h1>
       <p className="icon-text">
         We cannot seem to find the page you are looking for
       </p>
       <button
         type="button"
         className="shop-now-button"
-        onClick={() => this.getJobDetails()}
+        onClick={() => {
+          this.setState({apiStatus: 'inProgress'}, this.getJobDetails)
+        }}
       >
         Retry
       </button>

@@ -143,9 +143,7 @@ class Jobs extends Component {
 
     const options = {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${Cookies.get('jwt_token')}`,
-      },
+      headers: {Authorization: `Bearer ${Cookies.get('jwt_token')}`},
     }
     const response = await fetch(url, options)
     if (response.ok) {
@@ -177,7 +175,7 @@ class Jobs extends Component {
       <button
         type="button"
         className="retry-button"
-        onClick={this.getProfileDetails()}
+        onClick={this.getProfileDetails}
       >
         Retry
       </button>
@@ -250,11 +248,26 @@ class Jobs extends Component {
   }
 
   renderJobFailureView = () => (
-    <div>
+    <div className="failure-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
+        className="failure-image"
       />
+      <h1 className="title">Oops! Something went wrong</h1>
+      <p className="description">
+        We cannot seem to find the page you are looking for
+      </p>
+      <button
+        type="button"
+        className="shop-now-button"
+        onClick={() => {
+          console.log('clicked')
+          this.setState({apiStatus: 'inProgress'}, this.onClickSearch)
+        }}
+      >
+        Retry
+      </button>
     </div>
   )
 
