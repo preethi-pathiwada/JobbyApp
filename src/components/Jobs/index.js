@@ -224,10 +224,11 @@ class Jobs extends Component {
     const {resultsList} = this.state
     if (resultsList.length === 0) {
       return (
-        <div className="results-container">
+        <div className="no-jobs-con">
           <img
             src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
             alt="no jobs"
+            className="no-jobs-img"
           />
           <p className="title">No Jobs Found</p>
           <p className="description">
